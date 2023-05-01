@@ -1,5 +1,5 @@
 <?php
-    $con = mysqli_connect('RedlockDB', 'root', '', 'redlock');
+    $con = mysqli_connect('RedlockDB', 'root', '', 'redlock', 3306);
     
     $data = [];
     $result = $con->query("SELECT * FROM users");
@@ -20,7 +20,9 @@
             <th>Alamat</th>
             <th>Jabatan</th>
         </tr>
+        <?php $total = 0; ?>
         <?php foreach($data as $d){?>
+            <?php $total = $total + 1;?>
             <tr>
                 <td><?=$d["ID"]?></td>
                 <td><?=$d["Nama"]?></td>
@@ -29,5 +31,6 @@
             </tr>
         <?php }?>
     </table>
+    <h1>Total Jumlah User: <?=$total?></h1>
 </body>
 </html>
